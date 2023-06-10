@@ -2,14 +2,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'dependency_injection.dart';
-import 'repositories/firebase_remote_config_repository.dart';
+import 'repositories/url_receiver_repository.dart';
 import 'screens/home_screen/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await initDI();
-  await locator.call<FirebaseRemoteConfigRepository>().init();
+  await locator.call<UrlReceiverRepository>().init();
 
   runApp(const MyApp());
 }
