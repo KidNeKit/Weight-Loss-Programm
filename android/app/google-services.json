@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "354688928307",
+    "project_id": "webviewtz",
+    "storage_bucket": "webviewtz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:354688928307:android:9db37c40ef904970063146",
+        "android_client_info": {
+          "package_name": "com.example.weight_loss_programm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "354688928307-6ih31bhie8qjusb6b42chnfba177nl5g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaoTaHFEbsIo8EsIS6BdFU8r72Fq7mhUs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354688928307-6ih31bhie8qjusb6b42chnfba177nl5g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
