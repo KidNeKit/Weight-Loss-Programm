@@ -27,3 +27,9 @@ TextStyle listViewItem = const TextStyle(
   color: Colors.black,
   fontSize: 20.0,
 );
+
+TextStyle errorText = const TextStyle(
+  color: Colors.red,
+  fontSize: 20.0,
+  fontWeight: FontWeight.bold,
+);
