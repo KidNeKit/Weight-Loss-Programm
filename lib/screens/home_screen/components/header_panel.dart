@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+import '../../../dependency_injection.dart';
+import '../../../repositories/plans_repository.dart';
 import '../../../utils/styles.dart';
 
 class HeaderPanel extends StatelessWidget {
@@ -8,21 +10,17 @@ class HeaderPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        const SingleStat(text: 'Days Streak', value: '18'),
-        CircularPercentIndicator(
-            radius: 60.0,
-            lineWidth: 10.0,
-            center: const SingleStat(
-              text: 'DAY',
-              value: '30',
-              isMain: true,
-            )),
-        const SingleStat(text: 'Days Skipped', value: '18'),
-      ],
+    var plansRepository = locator.call<PlansRepository>();
+    return Center(
+      child: CircularPercentIndicator(
+        radius: 60.0,
+        lineWidth: 10.0,
+        percent: plansRepository.getCurrentDay() / 30,
+        center: SingleStat(
+          text: 'DAY',
+          value: plansRepository.getCurrentDay().toString(),
+        ),
+      ),
     );
   }
 }
@@ -30,13 +28,8 @@ class HeaderPanel extends StatelessWidget {
 class SingleStat extends StatelessWidget {
   final String text;
   final String value;
-  final bool isMain;
 
-  const SingleStat(
-      {required this.text,
-      required this.value,
-      this.isMain = false,
-      super.key});
+  const SingleStat({required this.text, required this.value, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +38,11 @@ class SingleStat extends StatelessWidget {
       children: [
         Text(
           value,
-          style: isMain ? mainDayInfoStyle : dayInfoStyle,
+          style: mainDayInfoStyle,
         ),
         Text(
           text,
-          style: isMain ? mainTextInfoStyle : textInfoStyle,
+          style: mainTextInfoStyle,
         ),
       ],
     );

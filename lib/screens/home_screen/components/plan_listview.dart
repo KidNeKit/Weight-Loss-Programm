@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:weight_loss_programm/utils/styles.dart';
+
+import '../../../data/plans_data.dart';
+import '../../../utils/styles.dart';
 
 class PlanListView extends StatelessWidget {
   const PlanListView({super.key});
@@ -9,8 +11,8 @@ class PlanListView extends StatelessWidget {
     return Expanded(
       child: ListView.separated(
         physics: const BouncingScrollPhysics(),
-        itemBuilder: (_, index) => const PlanItem(),
-        itemCount: 30,
+        itemBuilder: (_, index) => PlanItem(plan: plans[index]),
+        itemCount: plans.length,
         separatorBuilder: (_, index) => const SizedBox(height: 5.0),
       ),
     );
@@ -18,7 +20,8 @@ class PlanListView extends StatelessWidget {
 }
 
 class PlanItem extends StatelessWidget {
-  const PlanItem({super.key});
+  final String plan;
+  const PlanItem({required this.plan, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,17 +32,10 @@ class PlanItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(20.0),
         border: Border.all(),
       ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Text(
-              'Text',
-              overflow: TextOverflow.ellipsis,
-              style: listViewItem,
-            ),
-          ),
-          Checkbox(value: false, onChanged: (value) {}),
-        ],
+      child: Text(
+        plan,
+        overflow: TextOverflow.ellipsis,
+        style: listViewItem,
       ),
     );
   }
